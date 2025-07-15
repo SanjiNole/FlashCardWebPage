@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flashcard Practice</title>
+<style>
+body { font-family: sans-serif; text-align: center; background: #f4f4f4; padding:
+2em; }
+img { max-width: 90%; border-radius: 12px; border: 2px solid #aaa; margin: 1em 0; }
+button { padding: 10px 20px; margin: 10px; font-size: 1em; border-radius: 6px;
+cursor: pointer; background: #0069ed; color: white; border: none; }
+button:hover { background: #004ba8; }
+</style>
+</head>
+<body><h1>CompTIA Flashcard Practice</h1>
+<img id="cardImage" src="question1.png" alt="Flashcard Image" />
+<br />
+<button onclick="toggleAnswer()">Show Answer</button>
+<button onclick="nextCard()">Next Card</button>
+<script>
+const cards = [
+{ question: 'question1.png', answer: 'answer1.png' },
+{ question: 'question2.png', answer: 'answer2.png' },
+{ question: 'question3.png', answer: 'answer3.png' },
+];
+let currentIndex = 0;
+let showingAnswer = false;
+function toggleAnswer() {
+showingAnswer = !showingAnswer;
+document.getElementById('cardImage').src = showingAnswer
+? cards[currentIndex].answer
+: cards[currentIndex].question;
+}
+function nextCard() {
+currentIndex = (currentIndex + 1) % cards.length;
+showingAnswer = false;
+document.getElementById('cardImage').src = cards[currentIndex].question;
+}
+</script>
+</body>
+</html>
